@@ -19,4 +19,40 @@ class GameTest
     {
 
     }
+
+    public function testAPlayerCanClaimAColoredRouteIfItHaveMoreThanTheAmountOfCardsOfTheSameColor()
+    {
+
+    }
+
+    public function testAPlayerCanNotClaimAColoredRouteIfItHaveLessThanTheAmountOfCardsOfTheSameColor()
+    {
+
+    }
+
+    public function testAPlayerCanClaimAColoredRouteIfItHaveLocomotivesToCompleteTheAmountOfCards()
+    {
+
+    }
+
+    public function testAPlayerCanClaimAGrayRouteIfItHaveTheSameAmountOfCardsOfAColor()
+    {
+
+    }
+
+    public function testAPlayerCanClaimAGrayRouteIfItHaveMoreThanTheSameAmountOfCardsOfAColor()
+    {
+
+    }
+
+    public function testAPlayerCanNotClaimAGrayRouteIfItHaveLessThanTheSameAmountOfCardsOfAColor()
+    {
+
+    }
+
+    public function testAPlayerCanClaimAGrayRouteIfItHaveLocomotivesToCompleteTheAmountOfCards()
+    {
+
+    }
+
 }
