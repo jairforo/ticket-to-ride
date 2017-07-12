@@ -1,6 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @cover Color
+ */
 class ColorTest extends TestCase
 {
     public function testShouldHavePurple()

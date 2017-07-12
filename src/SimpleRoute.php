@@ -1,9 +1,7 @@
 <?php
 
-class OneColorRoute
+class SimpleRoute implements Route
 {
-    const COLORS = ['purple', 'white', 'blue', 'yellow', 'orange', 'black', 'red', 'green', 'gray'];
-
     const MIN_LENGTH = 1;
 
     const MAX_LENGTH = 6;
@@ -17,7 +15,7 @@ class OneColorRoute
         6 => 15
     ];
 
-    /** @var string */
+    /** @var Color */
     private $color;
 
     /** @var int */
@@ -29,9 +27,9 @@ class OneColorRoute
     /** @var City */
     private $city2;
 
-    public function __construct(string $color, int $length, City $city1, City $city2)
+    public function __construct(Color $color, int $length, City $city1, City $city2)
     {
-        $this->ruleValidation($color, $length, $city1, $city2);
+        $this->ruleValidation($length, $city1, $city2);
 
         $this->color = $color;
         $this->length = $length;
@@ -39,7 +37,7 @@ class OneColorRoute
         $this->city2 = $city2;
     }
 
-    public function getColor(): string
+    public function getColor(): Color
     {
         return $this->color;
     }
@@ -64,14 +62,11 @@ class OneColorRoute
         return self::POINTS[$this->length];
     }
 
-    private function ruleValidation(string $color, int $length, City $city1, City $city2)
+    private function ruleValidation(int $length, City $city1, City $city2)
     {
-        if (!in_array($color, self::COLORS)) {
-            throw new InvalidArgumentException($color . ' is not valid color');
-        }
 
         if ($length < self::MIN_LENGTH || $length > self::MAX_LENGTH) {
-            throw new InvalidArgumentException($color . ' is not valid color');
+            throw new InvalidArgumentException($length. ' is not valid color');
         }
 
         if ($city1->getName() == $city2->getName()) {
@@ -79,4 +74,8 @@ class OneColorRoute
         }
     }
 
+    public function accepts(TrainCarCard $trainCard): bool
+    {
+        return $trainCard->hasColor($this->getColor());
+    }
 }

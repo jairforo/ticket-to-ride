@@ -8,5 +8,10 @@
  */
 interface Route
 {
+    public function getLength(): int;
+    public function getColor(): Color;
+    public function getPoints(): int;
     public function accepts(TrainCarCard $trainCard): bool;
+    public function getCity1(): City;
+    public function getCity2(): City;
 }

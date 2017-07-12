@@ -2,6 +2,9 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @cover City
+ */
 class CityTest extends TestCase
 {
     public function setUp()

@@ -2,13 +2,16 @@
 
 use PHPUnit\Framework\TestCase;
 
-class OneColorRouteTest extends TestCase
+/**
+ * @cover SimpleRoute
+ */
+class SimpleRouteTest extends TestCase
 {
-    const A_COLOR = 'blue';
+    private $aColor;
 
     const A_LENGTH = 1;
 
-    /** @var OneColorRoute */
+    /** @var SimpleRoute */
     private $route;
 
     /** @var  City */
@@ -20,12 +23,12 @@ class OneColorRouteTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-
+        $this->aColor = Color::BLUE();
         $this->lisbon = new City('Lisbon');
         $this->cascais = new City('Cascais');
 
-        $this->route = new OneColorRoute(
-            self::A_COLOR,
+        $this->route = new SimpleRoute(
+            $this->aColor,
             self::A_LENGTH,
             $this->lisbon,
             $this->cascais
@@ -33,11 +36,11 @@ class OneColorRouteTest extends TestCase
     }
 
     /**
-     * @dataProvider colorProvider
+     * @dataProvider allColors
      */
-    public function testMustHaveAValidColor($color)
+    public function testMustHaveAColor(Color $color)
     {
-        $route = new OneColorRoute(
+        $route = new SimpleRoute(
                 $color,
             self::A_LENGTH,
             $this->lisbon,
@@ -46,21 +49,18 @@ class OneColorRouteTest extends TestCase
         $this->assertEquals($color, $route->getColor());
     }
 
-    public function testCanNotHaveAnInvalidColor()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        new OneColorRoute(
-            'locomotive',
-            self::A_LENGTH,
-            $this->lisbon,
-            $this->cascais
-        );
-    }
-
-    public function colorProvider()
+    public function allColors()
     {
         return [
-            ['purple'], ['white'], ['blue'], ['yellow'], ['orange'], ['black'], ['red'], ['green'], ['gray']
+            [Color::PURPLE()],
+            [Color::WHITE()],
+            [Color::BLUE()],
+            [Color::YELLOW()],
+            [Color::ORANGE()],
+            [Color::BLACK()],
+            [Color::RED()],
+            [Color::GREEN()],
+            [Color::GRAY()],
         ];
     }
 
@@ -69,8 +69,8 @@ class OneColorRouteTest extends TestCase
      */
     public function testMustHaveALengthBetweenOneAndSix($length)
     {
-        $route = new OneColorRoute(
-            self::A_COLOR,
+        $route = new SimpleRoute(
+            $this->aColor,
             $length,
             $this->lisbon,
             $this->cascais
@@ -92,8 +92,8 @@ class OneColorRouteTest extends TestCase
     public function testCanNOtHaveAnInvalidLength($length)
     {
         $this->expectException(InvalidArgumentException::class);
-        new OneColorRoute(
-            self::A_COLOR,
+        new SimpleRoute(
+            $this->aColor,
             $length,
             $this->lisbon,
             $this->cascais
@@ -117,8 +117,8 @@ class OneColorRouteTest extends TestCase
     public function testCanNotConnectTheSameCity()
     {
         $this->expectException(InvalidArgumentException::class);
-        new OneColorRoute(
-            self::A_COLOR,
+        new SimpleRoute(
+            $this->aColor,
             self::A_LENGTH,
             $this->lisbon,
             $this->lisbon
@@ -130,8 +130,8 @@ class OneColorRouteTest extends TestCase
      */
     public function testHavePointsBasedOnItsLength($length, $points)
     {
-        $route = new OneColorRoute(
-            self::A_COLOR,
+        $route = new SimpleRoute(
+            $this->aColor,
             $length,
             $this->lisbon,
             $this->cascais
@@ -150,6 +150,19 @@ class OneColorRouteTest extends TestCase
             [5,10],
             [6,15],
         ];
+    }
+
+    public function testCanAcceptTrainCardsThatHaveTheSameColor()
+    {
+        $trainCard = Phake::mock(TrainCarCard::class);
+        Phake::when($trainCard)->hasColor($this->route->getColor())->thenReturn(true);
+        $this->assertTrue($this->route->accepts($trainCard));
+    }
+
+    public function testCanNotAcceptTrainCardsOfAnotherColor() {
+        $trainCard = Phake::mock(TrainCarCard::class);
+        Phake::when($trainCard)->hasColor($this->route->getColor())->thenReturn(false);
+        $this->assertFalse($this->route->accepts($trainCard));
     }
     
 }
