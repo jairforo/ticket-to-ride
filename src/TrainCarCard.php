@@ -1,32 +1,10 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: massahud
  * Date: 12-07-2017
- * Time: 12:03
+ * Time: 14:37
  */
-class TrainCarCard
-{
-
-    const COLORS = ['purple', 'white', 'blue', 'yellow', 'orange', 'black', 'red', 'green', 'locomotive'];
-
-    private $color;
-
-    function __construct($color)
-    {
-        if (!in_array($color, self::COLORS)) {
-            throw new InvalidArgumentException($color . ' is not valid color');
-        }
-
-        $this->color = $color;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
+interface TrainCarCard {
+    public function hasColor(Color $color): bool;
 }

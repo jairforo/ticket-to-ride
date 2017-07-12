@@ -2,13 +2,13 @@
 
 use PHPUnit\Framework\TestCase;
 
-class RouteTest extends TestCase
+class OneColorRouteTest extends TestCase
 {
     const A_COLOR = 'blue';
 
     const A_LENGTH = 1;
 
-    /** @var Route */
+    /** @var OneColorRoute */
     private $route;
 
     /** @var  City */
@@ -24,7 +24,7 @@ class RouteTest extends TestCase
         $this->lisbon = new City('Lisbon');
         $this->cascais = new City('Cascais');
 
-        $this->route = new Route(
+        $this->route = new OneColorRoute(
             self::A_COLOR,
             self::A_LENGTH,
             $this->lisbon,
@@ -37,7 +37,7 @@ class RouteTest extends TestCase
      */
     public function testMustHaveAValidColor($color)
     {
-        $route = new Route(
+        $route = new OneColorRoute(
                 $color,
             self::A_LENGTH,
             $this->lisbon,
@@ -49,7 +49,7 @@ class RouteTest extends TestCase
     public function testCanNotHaveAnInvalidColor()
     {
         $this->expectException(InvalidArgumentException::class);
-        new Route(
+        new OneColorRoute(
             'locomotive',
             self::A_LENGTH,
             $this->lisbon,
@@ -69,7 +69,7 @@ class RouteTest extends TestCase
      */
     public function testMustHaveALengthBetweenOneAndSix($length)
     {
-        $route = new Route(
+        $route = new OneColorRoute(
             self::A_COLOR,
             $length,
             $this->lisbon,
@@ -92,7 +92,7 @@ class RouteTest extends TestCase
     public function testCanNOtHaveAnInvalidLength($length)
     {
         $this->expectException(InvalidArgumentException::class);
-        new Route(
+        new OneColorRoute(
             self::A_COLOR,
             $length,
             $this->lisbon,
@@ -117,7 +117,7 @@ class RouteTest extends TestCase
     public function testCanNotConnectTheSameCity()
     {
         $this->expectException(InvalidArgumentException::class);
-        new Route(
+        new OneColorRoute(
             self::A_COLOR,
             self::A_LENGTH,
             $this->lisbon,
@@ -130,7 +130,7 @@ class RouteTest extends TestCase
      */
     public function testHavePointsBasedOnItsLength($length, $points)
     {
-        $route = new Route(
+        $route = new OneColorRoute(
             self::A_COLOR,
             $length,
             $this->lisbon,

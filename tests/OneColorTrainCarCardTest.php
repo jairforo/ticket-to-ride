@@ -7,14 +7,14 @@ use PHPUnit\Framework\TestCase;
  * Date: 12-07-2017
  * Time: 12:03
  */
-class TrainCarCardTest extends TestCase
+class OneColorTrainCarCardTest extends TestCase
 {
     /**
      * @dataProvider colorProvider
      */
     public function testMustHaveAValidColor($color)
     {
-        $trainCarCard = new TrainCarCard($color);
+        $trainCarCard = new OneColorTrainCarCard($color);
         $this->assertEquals($color, $trainCarCard->getColor());
     }
 
@@ -36,6 +36,6 @@ class TrainCarCardTest extends TestCase
     public function testCanNotHaveAnInvalidColor()
     {
         $this->expectException(InvalidArgumentException::class);
-        new TrainCarCard('gray');
+        new OneColorTrainCarCard('magenta');
     }
 }
