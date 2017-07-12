@@ -28,9 +28,9 @@ class LocomotiveTest extends TestCase
         ];
     }
 
-    public function testShouldHaveNoColor()
+    public function testShouldHaveAllColors()
     {
         $locomotive = new Locomotive();
-        $this->assertEquals(Color::NO_COLOR(), $locomotive->getColor());
+        $this->assertEquals(Color::ALL_COLORS(), $locomotive->getColor());
     }
 }

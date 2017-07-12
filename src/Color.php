@@ -29,7 +29,7 @@ final class Color
         return self::$colors[$name];
     }
 
-    public final static function NO_COLOR(): Color
+    public final static function ALL_COLORS(): Color
     {
         return self::getColor('nocolor');
     }

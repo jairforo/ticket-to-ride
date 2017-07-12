@@ -44,6 +44,6 @@ class ColorTest extends TestCase
     }
     public function testShouldHaveNoColor()
     {
-        $this->assertEquals('nocolor', Color::NO_COLOR()->getName());
+        $this->assertEquals('nocolor', Color::ALL_COLORS()->getName());
     }
 }

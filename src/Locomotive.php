@@ -16,6 +16,6 @@ class Locomotive implements TrainCarCard
 
     public function getColor(): Color
     {
-        return Color::NO_COLOR();
+        return Color::ALL_COLORS();
     }
 }

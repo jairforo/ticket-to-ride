@@ -32,12 +32,12 @@ class Game
                 $counts[$color] = $count;
             }
         }
-        $locomotives = $counts[Color::NO_COLOR()->getName()] ?? 0;
+        $locomotives = $counts[Color::ALL_COLORS()->getName()] ?? 0;
         if ($locomotives >= $route->getLength()) {
             return true;
         }
         foreach ($counts as $key => $count) {
-            if ($key != Color::NO_COLOR()->getName() &&
+            if ($key != Color::ALL_COLORS()->getName() &&
                 $count + $locomotives >= $route->getLength()) {
                 return true;
             }
