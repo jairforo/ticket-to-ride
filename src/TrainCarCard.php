@@ -7,4 +7,5 @@
  */
 interface TrainCarCard {
     public function hasColor(Color $color): bool;
+    public function getColor(): Color;
 }

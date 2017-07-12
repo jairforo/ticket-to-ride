@@ -6,11 +6,16 @@
  * Date: 12-07-2017
  * Time: 15:39
  */
-class Locomotive extends AbstractTrainCard
+class Locomotive implements TrainCarCard
 {
 
     public function hasColor(Color $color): bool
     {
         return true;
+    }
+
+    public function getColor(): Color
+    {
+        return Color::NO_COLOR();
     }
 }

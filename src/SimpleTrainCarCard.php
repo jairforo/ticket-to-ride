@@ -6,7 +6,7 @@
  * Date: 12-07-2017
  * Time: 15:44
  */
-class SimpleTrainCarCard extends AbstractTrainCard
+class SimpleTrainCarCard implements TrainCarCard
 {
 
     /**
@@ -24,5 +24,10 @@ class SimpleTrainCarCard extends AbstractTrainCard
     public function hasColor(Color $color): bool
     {
         return $color == $this->color;
+    }
+
+    public function getColor(): Color
+    {
+        return $this->color;
     }
 }

@@ -16,6 +16,13 @@ class SimpleTrainCarCardTest extends TestCase
         $this->assertTrue($trainCarCard->hasColor($color));
     }
 
+    public function testShouldReturnItsColor()
+    {
+
+        $trainCarCard = new SimpleTrainCarCard(Color::YELLOW());
+        $this->assertEquals(Color::YELLOW(), $trainCarCard->getColor());
+    }
+
     public function testShouldHaveOnlyOneColor()
     {
 
@@ -42,4 +49,5 @@ class SimpleTrainCarCardTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         new SimpleTrainCarCard(Color::GRAY());
     }
+
 }

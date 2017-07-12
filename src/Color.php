@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: massahud
- * Date: 12-07-2017
- * Time: 14:38
- */
 final class Color
 {
 
@@ -33,6 +27,11 @@ final class Color
             self::$colors[$name] = new Color($name);
         }
         return self::$colors[$name];
+    }
+
+    public final static function NO_COLOR(): Color
+    {
+        return self::getColor('nocolor');
     }
 
     public final static function PURPLE(): Color
