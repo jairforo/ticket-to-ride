@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @cover Color
+ * @covers Color
  */
 class ColorTest extends TestCase
 {

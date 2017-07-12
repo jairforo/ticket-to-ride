@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @cover GrayRoute
+ * @covers GrayRoute
  */
 class GrayRouteTest extends TestCase
 {

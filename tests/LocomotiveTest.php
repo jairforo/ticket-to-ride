@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @cover Locomotive
+ * @covers Locomotive
  */
 class LocomotiveTest extends TestCase
 {

@@ -2,7 +2,8 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @cover SimpleTrainCarCard
+ * @covers SimpleTrainCarCard
+
  */
 class SimpleTrainCarCardTest extends TestCase
 {

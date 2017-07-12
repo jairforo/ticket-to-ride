@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @cover City
+ * @covers City
  */
 class CityTest extends TestCase
 {

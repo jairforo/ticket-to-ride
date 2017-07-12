@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @cover SimpleRoute
+ * @covers SimpleRoute
  */
 class SimpleRouteTest extends TestCase
 {
